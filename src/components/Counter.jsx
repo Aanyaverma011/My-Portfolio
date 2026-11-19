@@ -1,20 +1,24 @@
 import { useEffect, useRef, useState } from 'react'
 
-export default function Counter({ n, s = '', cls = 'grad' }) {
+export default function Counter({ n, s = '', cls }) {
   const ref = useRef(null)
   const [v, setV] = useState(0)
   useEffect(() => {
-    const T = +n
+    const target = +n
     let id
-    const io = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return
-      io.disconnect()
-      let c = 0
-      const step = Math.max(1, Math.ceil(T / 60))
-      id = setInterval(() => { c = Math.min(T, c + step); setV(c); if (c >= T) clearInterval(id) }, 20)
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+      observer.disconnect()
+      let current = 0
+      const step = Math.max(1, Math.ceil(target / 60))
+      id = setInterval(() => {
+        current = Math.min(target, current + step)
+        setV(current)
+        if (current >= target) clearInterval(id)
+      }, 20)
     }, { threshold: 0.3 })
-    io.observe(ref.current)
-    return () => { io.disconnect(); clearInterval(id) }
+    if (ref.current) observer.observe(ref.current)
+    return () => { observer.disconnect(); clearInterval(id) }
   }, [n])
   return <b ref={ref} className={cls}>{v}{v >= +n ? s : ''}</b>
 }

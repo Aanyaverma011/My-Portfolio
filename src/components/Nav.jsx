@@ -1,26 +1,16 @@
-
 const LINKS = [
-  ['about', 'About'],
-  ['skills', 'Skills'],
-  ['projects', 'Projects'],
-  ['experience', 'Experience'],
-  ['education', 'Education'],
-  ['achievements', 'Achievements'],
-  ['hobbies', 'Hobbies'],
-  ['contact', 'Contact']
-];
+  ['about', 'About'], ['skills', 'Skills'], ['projects', 'Projects'],
+  ['experience', 'Experience'], ['education', 'Education'],
+  ['achievements', 'Achievements'], ['hobbies', 'Hobbies'], ['contact', 'Contact']
+]
 
-export default function Nav({ onToggle }) {
+export default function Nav() {
   return (
     <nav>
       <b>AV.</b>
-
       <div className="l">
-        {LINKS.map(([id, t]) => (
-          <a key={id} href={'#' + id}>{t}</a>
-        ))}
-
+        {LINKS.map(([id, title]) => <a key={id} href={'#' + id}>{title}</a>)}
       </div>
     </nav>
-  );
+  )
 }

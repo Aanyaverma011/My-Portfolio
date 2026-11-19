@@ -25,7 +25,6 @@ export default function App() {
       return cur === 'dark' ? 'light' : 'dark'
     })
 
-  // scroll-reveal animation
   useEffect(() => {
     const io = new IntersectionObserver(
       (es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }),
