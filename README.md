@@ -12,10 +12,3 @@
 ## Build for deployment
     npm run build
 Deploy the generated `dist/` folder to Vercel, Netlify or GitHub Pages.
-
-## Where to edit
-- `src/data/links.js` - LeetCode and Codeforces links, emails, phone, LinkedIn, GitHub
-- `src/components/Projects.jsx` - project text, tech chips and each project's GitHub / live demo link
-- `src/components/*.jsx` - each section of the page
-- `src/index.css` - colours and styles (colour tokens are at the top, in `:root`)
-- `src/assets/profile.jpg` - your photo
